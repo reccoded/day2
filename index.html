@@ -3202,15 +3202,17 @@ document.getElementById("jsonRestoreInput").onchange=async e=>{
     if(!ok)return;
 
     data=parsed.data;
+    normalizeLoadedData();
+    ensureInitialWeeks();
     await saveAll();
 
-    ensureInitialWeeks();
     renderAll();
     updateStats();
 
     alert("복원이 완료되었습니다.");
-  }catch{
-    alert("백업 파일을 읽을 수 없습니다.");
+  }catch(err){
+    console.error("DAY backup restore error",err);
+    alert("백업 파일을 읽거나 복원하는 중 오류가 발생했습니다.");
   }
 
   e.target.value="";
