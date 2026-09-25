@@ -1038,8 +1038,8 @@ button{cursor:pointer}
   button:active:not(:disabled){transform:translateY(1px) scale(.985)}
 }
 /* PLAN tabs: slightly wider and optically centered */
-.plan-tabs{width:276px;margin-left:auto;margin-right:auto;padding:4px;border-radius:14px}
-.plan-tabs button{padding:9px 13px;border-radius:10px;font-weight:750}
+.plan-tabs{width:276px;margin-left:auto;margin-right:auto;padding:3px;border-radius:12px}
+.plan-tabs button{padding:5px 13px;border-radius:9px;font-size:12px;font-weight:750}
 /* DAY/LOG lives inside the original header, using PLAN tab language */
 .day-header{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;margin-bottom:13px}
 .day-actions{justify-self:end;display:flex}
@@ -1072,7 +1072,8 @@ button{cursor:pointer}
 }
 @media(min-width:1600px){#monthRows{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.month-row{min-height:285px}}
 @media(max-width:699px){
-  .plan-tabs{width:258px}
+  .plan-tabs{width:258px;padding:3px}
+  .plan-tabs button{padding:5px 10px;font-size:12px}
   .day-header{grid-template-columns:auto 1fr auto;gap:5px}
   .day-inline-tabs{width:128px;justify-self:center;padding:3px}
   .day-inline-tabs button{padding:7px 7px;font-size:12px}
@@ -1082,12 +1083,31 @@ button{cursor:pointer}
   .month-row{min-height:230px}.month-row>.drop-zone{min-height:165px}
 }
 
+
+/* DAY recent diary preview */
+.diary-grid-panel{padding:2px 0 28px}
+.diary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:9px}
+.diary-preview-card{min-width:0;height:96px;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--surface);text-align:left;color:var(--text);overflow:hidden}
+.diary-preview-card:hover{border-color:#c7c3b8;background:#f7f5ef}
+.diary-preview-date{font-size:10px;color:var(--muted);margin-bottom:5px;white-space:nowrap}
+.diary-preview-title{font-size:12px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:4px}
+.diary-preview-text{font-size:11px;line-height:1.42;color:#66675f;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word}
+#diaryGridToggle{font-size:18px;font-weight:800;color:var(--muted)}
+@media(max-width:699px){
+  .diary-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  .diary-preview-card{height:88px;padding:8px 7px;border-radius:10px}
+  .diary-preview-date{font-size:9px;margin-bottom:4px}
+  .diary-preview-title{font-size:11px;margin-bottom:3px}
+  .diary-preview-text{font-size:10px;line-height:1.35;-webkit-line-clamp:3}
+  #diaryGridToggle{font-size:16px}
+}
+
 /* V2 LOG desktop layout + unified header controls */
 .log-wrap{width:100%;max-width:none;margin:0;padding-bottom:40px}
 .log-trash-top{justify-self:start;color:var(--danger);font-size:25px;font-weight:700}
 .day-delete-top{color:var(--danger)!important;font-size:25px!important;font-weight:700!important}
-.log-csv-top{color:#587451!important;font-size:24px!important;font-weight:800!important}
-.day-actions .icon-btn,#searchToggle,#deleteDiary,#logCsvTop{width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;line-height:1;font-size:19px;padding:0}
+.log-csv-top{color:#587451!important;font-size:18px!important;font-weight:800!important}
+.day-actions .icon-btn,#searchToggle,#diaryGridToggle,#deleteDiary,#logCsvTop{width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;line-height:1;font-size:19px;padding:0}
 .month-row.current{background:var(--accent-soft);border-color:#c7d0c2}
 @media(min-width:700px){
   #logEditor{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
@@ -1108,7 +1128,7 @@ button{cursor:pointer}
   #logEditor>.log-card:nth-child(3){grid-column:1}
   #logEditor>.log-card:nth-child(4){grid-column:2}
 }
-@media(max-width:699px){.log-trash-top{width:34px;height:34px;font-size:22px}.day-actions .icon-btn,#searchToggle,#deleteDiary,#logCsvTop{width:34px;height:34px;font-size:18px}}
+@media(max-width:699px){.log-trash-top{width:34px;height:34px;font-size:22px}.day-actions .icon-btn,#searchToggle,#diaryGridToggle,#deleteDiary,#logCsvTop{width:34px;height:34px;font-size:18px}.log-csv-top{font-size:16px!important}.morect-number{height:38px}}
 
 /* LOG visual polish: keep DAY header geometry and add gentle card separation */
 .day-header{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -1157,6 +1177,7 @@ button{cursor:pointer}
     <div class="day-actions">
       <button class="icon-btn log-csv-top hidden" id="logCsvTop" aria-label="LOG CSV 내보내기">＋</button>
       <button class="icon-btn" id="searchToggle">⌕</button>
+      <button class="icon-btn" id="diaryGridToggle" aria-label="최근 일기 미리보기">≡</button>
       <button class="icon-btn day-delete-top" id="deleteDiary" aria-label="일기 삭제">−</button>
       <button class="icon-btn log-trash-top hidden" id="logTrashTop" aria-label="LOG 비우기">−</button>
     </div>
@@ -1171,6 +1192,10 @@ button{cursor:pointer}
     </div>
     <input class="search-input" id="searchInput" placeholder="검색">
     <div id="searchResults"></div>
+  </div>
+
+  <div id="diaryGridPanel" class="diary-grid-panel hidden">
+    <div id="diaryGrid" class="diary-grid"></div>
   </div>
 
   <div id="diaryEditor">
@@ -1888,6 +1913,79 @@ document.getElementById("deleteDiary").onclick=async()=>{
   }
 };
 
+
+/* RECENT DIARY PREVIEW */
+function recentDiaryEntries(){
+  return Object.entries(data.diaries||{})
+    .filter(([date,e])=>date&&e&&((e.title||"").trim()||(e.text||"").trim()||(e.tags||[]).length))
+    .sort((a,b)=>{
+      const au=Number(a[1]?.updatedAt)||0, bu=Number(b[1]?.updatedAt)||0;
+      if(au!==bu)return bu-au;
+      return b[0].localeCompare(a[0]);
+    })
+    .slice(0,30);
+}
+function renderDiaryGrid(){
+  const box=document.getElementById("diaryGrid");
+  box.innerHTML="";
+  const entries=recentDiaryEntries();
+  if(!entries.length){
+    const empty=document.createElement("div");
+    empty.className="empty";
+    empty.textContent="아직 작성한 일기가 없습니다.";
+    box.appendChild(empty);
+    return;
+  }
+  entries.forEach(([date,e])=>{
+    const card=document.createElement("button");
+    card.type="button";
+    card.className="diary-preview-card";
+    const d=document.createElement("div");
+    d.className="diary-preview-date";
+    d.textContent=date;
+    const title=document.createElement("div");
+    title.className="diary-preview-title";
+    title.textContent=(e.title||"").trim()||"제목 없음";
+    const preview=document.createElement("div");
+    preview.className="diary-preview-text";
+    preview.textContent=(e.text||"").trim()||(e.tags||[]).map(t=>"#"+t).join(" ")||"";
+    card.append(d,title,preview);
+    card.onclick=()=>{
+      selectedDate=date;
+      renderDiary();
+      closeDiaryGrid();
+    };
+    box.appendChild(card);
+  });
+}
+function closeDiaryGrid(){
+  document.getElementById("diaryGridPanel").classList.add("hidden");
+  document.getElementById("diaryEditor").classList.remove("hidden");
+  document.getElementById("dayDateNav").classList.remove("hidden");
+  document.getElementById("searchToggle").classList.remove("hidden");
+  document.getElementById("deleteDiary").classList.remove("hidden");
+  const btn=document.getElementById("diaryGridToggle");
+  btn.textContent="≡";
+  btn.setAttribute("aria-label","최근 일기 미리보기");
+}
+document.getElementById("diaryGridToggle").onclick=async()=>{
+  const panel=document.getElementById("diaryGridPanel");
+  const opening=panel.classList.contains("hidden");
+  if(!opening){closeDiaryGrid();return}
+  clearTimeout(diaryTimer);
+  await saveDiary();
+  document.getElementById("searchPanel").classList.add("hidden");
+  document.getElementById("diaryEditor").classList.add("hidden");
+  document.getElementById("dayDateNav").classList.add("hidden");
+  document.getElementById("searchToggle").classList.add("hidden");
+  document.getElementById("deleteDiary").classList.add("hidden");
+  panel.classList.remove("hidden");
+  const btn=document.getElementById("diaryGridToggle");
+  btn.textContent="←";
+  btn.setAttribute("aria-label","일기로 돌아가기");
+  renderDiaryGrid();
+};
+
 /* SEARCH */
 
 document.getElementById("searchToggle").onclick=()=>{
@@ -1899,6 +1997,7 @@ document.getElementById("searchToggle").onclick=()=>{
   editor.classList.toggle("hidden",opening);
   document.getElementById("dayDateNav").classList.toggle("hidden",opening);
   document.getElementById("deleteDiary").classList.toggle("hidden",opening);
+  document.getElementById("diaryGridToggle").classList.toggle("hidden",opening);
   document.getElementById("searchToggle").textContent=opening?"←":"⌕";
 
   if(opening){
@@ -1978,6 +2077,7 @@ function runSearch(){
       document.getElementById("searchToggle").textContent="⌕";
       document.getElementById("searchToggle").setAttribute("aria-label","검색");
       document.getElementById("deleteDiary").classList.remove("hidden");
+      document.getElementById("diaryGridToggle").classList.remove("hidden");
       document.querySelector(".date-nav").classList.remove("hidden");
       document.getElementById("dayDateNav").classList.remove("hidden");
       document.getElementById("deleteDiary").classList.remove("hidden");
@@ -2004,7 +2104,7 @@ function renderLog(){if(!document.getElementById("logEditor"))return;const x=cur
 window.renderLog=renderLog;
 [ ["logSchedule","schedule"],["logTitle1","title1"],["logRecord1","record1"],["logTitle2","title2"],["logRecord2","record2"],["logDaily","daily"] ].forEach(x=>bindLogField(...x));
 document.getElementById("addMainSession").onclick=async()=>{const x=currentLog();if(x.main.length>=8){alert("메인 기록은 최대 8개입니다.");return}x.main.push({minutes:"",chars:"",type:""});await saveAll();renderLog()};
-function setDayInner(mode){dayInnerMode=mode;document.getElementById("dayInnerTab").classList.toggle("active",mode==="day");document.getElementById("logInnerTab").classList.toggle("active",mode==="log");document.getElementById("diaryEditor").classList.toggle("hidden",mode!=="day");document.getElementById("logEditor").classList.toggle("hidden",mode!=="log");document.getElementById("searchToggle").classList.toggle("hidden",mode!=="day");document.getElementById("deleteDiary").classList.toggle("hidden",mode!=="day");document.getElementById("logTrashTop").classList.toggle("hidden",mode!=="log");document.getElementById("logCsvTop").classList.toggle("hidden",mode!=="log");document.getElementById("searchPanel").classList.add("hidden");if(mode==="log")renderLog()}
+function setDayInner(mode){dayInnerMode=mode;document.getElementById("dayInnerTab").classList.toggle("active",mode==="day");document.getElementById("logInnerTab").classList.toggle("active",mode==="log");document.getElementById("diaryGridPanel").classList.add("hidden");document.getElementById("diaryEditor").classList.toggle("hidden",mode!=="day");document.getElementById("logEditor").classList.toggle("hidden",mode!=="log");document.getElementById("searchToggle").classList.toggle("hidden",mode!=="day");document.getElementById("diaryGridToggle").classList.toggle("hidden",mode!=="day");document.getElementById("deleteDiary").classList.toggle("hidden",mode!=="day");document.getElementById("logTrashTop").classList.toggle("hidden",mode!=="log");document.getElementById("logCsvTop").classList.toggle("hidden",mode!=="log");document.getElementById("searchPanel").classList.add("hidden");document.getElementById("dayDateNav").classList.remove("hidden");document.getElementById("diaryGridToggle").textContent="≡";if(mode==="log")renderLog()}
 document.getElementById("dayInnerTab").onclick=()=>setDayInner("day");document.getElementById("logInnerTab").onclick=()=>setDayInner("log");
 function csvCell(v){v=String(v??"");return /[",\n]/.test(v)?`"${v.replace(/"/g,'""')}"`:v}
 function logRows(from,to){return Object.keys(data.logs||{}).filter(d=>d>=from&&d<=to).sort().map(d=>{const x=data.logs[d],row=[d,x.daily||"",x.schedule,x.morect.M?"TRUE":"FALSE",x.morect.O,x.morect.R?"TRUE":"FALSE",x.morect.E?"TRUE":"FALSE",x.morect.C?"TRUE":"FALSE",x.morect.T?"TRUE":"FALSE",x.title1,x.record1,x.title2,x.record2];for(let i=0;i<8;i++){const o=x.main[i]||{};row.push(o.minutes||"",o.chars||"",o.type||"")}row.push(x.sub?.minutes||"",x.sub?.chars||"",x.sub?.type||"",x.indo?.minutes||"",x.indo?.chars||"",x.indo?.type||"");return row})}
