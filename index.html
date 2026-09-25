@@ -3438,7 +3438,7 @@ document.addEventListener("pointerdown",e=>{
     }
     if(!dragging)return;ev.preventDefault();
     const rawTarget=document.elementFromPoint(ev.clientX,ev.clientY);
-    const target=rawTarget?.closest(".plan-trash,.loose-area,.day-row,.week-row");
+    const target=rawTarget?.closest(".plan-trash,.loose-area,.day-row,.week-row,.month-row");
     document.querySelectorAll(".drop-hover").forEach(x=>x.classList.remove("drop-hover"));
     if(target)target.classList.add("drop-hover");
   }
@@ -3446,11 +3446,11 @@ document.addEventListener("pointerdown",e=>{
     cleanup();if(!dragging){pointerDrag=null;return;}
     const drag=pointerDrag;pointerDrag=null;chip.style.opacity="";
     const rawTarget=document.elementFromPoint(ev.clientX,ev.clientY);
-    const target=rawTarget?.closest(".plan-trash,.loose-area,.day-row,.week-row");
+    const target=rawTarget?.closest(".plan-trash,.loose-area,.day-row,.week-row,.month-row");
     document.querySelectorAll(".drop-hover").forEach(x=>x.classList.remove("drop-hover"));
     if(!target||!drag)return;
     if(target.classList.contains("plan-trash")){
-      const trashType=target.id==="weekdayTrash"?"weekday":"weekly";
+      const trashType=target.id==="weekdayTrash"?"weekday":target.id==="weeklyTrash"?"weekly":target.id==="monthlyTrash"?"monthly":null;
       if(trashType===drag.type){
         data.plan[drag.type].chips=data.plan[drag.type].chips.filter(c=>c.id!==drag.id);
         await saveAll();renderPlan();
@@ -3469,6 +3469,10 @@ document.addEventListener("pointerdown",e=>{
       const i=[...document.querySelectorAll("#weekdayBoard .day-row")].indexOf(target);
       ensureWeekdaySlots();
       zone=data.plan.weekday.slots[i]?.zone||null;
+    }else if(target.classList.contains("month-row")){
+      if(drag.type!=="monthly")return;
+      const i=[...document.querySelectorAll("#monthRows .month-row")].indexOf(target);
+      zone=[...data.plan.monthly.months].sort()[i]||null;
     }
     const item=data.plan[drag.type].chips.find(c=>c.id===drag.id);
     if(item&&zone){
