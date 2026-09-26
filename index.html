@@ -2048,7 +2048,24 @@ function runSearch(){
   const box=document.getElementById("searchResults");
   box.innerHTML="";
   if(dayInnerMode==="log"){
-    box.classList.remove("list-mode");
+    box.classList.toggle("list-mode",searchMode==="input");
+    if(searchMode==="input"){
+      const items=[];
+      Object.entries(data.logs||{}).forEach(([date,x])=>{
+        const titles=logInputTitles(x);
+        titles.forEach(title=>{
+          if(!q || title.toLowerCase().includes(q)) items.push({date,title});
+        });
+      });
+      items.sort((a,b)=>b.date.localeCompare(a.date));
+      items.forEach(({date,title})=>{
+        const div=document.createElement("div"); div.className="search-result";
+        const d=document.createElement("div"); d.className="search-result-date"; d.textContent=date;
+        const p=document.createElement("div"); p.className="search-preview"; p.textContent=title;
+        div.append(d,p); div.onclick=()=>closeSearchToDate(date); box.appendChild(div);
+      });
+      return;
+    }
     if(!q)return;
     const results=Object.entries(data.logs||{}).filter(([date,x])=>{
       if(searchMode==="work") return [x.title1,x.record1,x.title2,x.record2].some(v=>String(v||"").toLowerCase().includes(q));
