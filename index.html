@@ -223,6 +223,9 @@ button{cursor:pointer}
   cursor:pointer;
 }
 .search-result-date{font-weight:650;margin-bottom:4px}
+.input-result-head{display:flex;align-items:center;gap:7px;margin-bottom:4px}
+.input-result-head .search-result-date{margin-bottom:0}
+.input-type-badge{font-size:11px;font-weight:650;color:var(--muted);background:var(--surface2);border:1px solid var(--line);border-radius:999px;padding:2px 7px;line-height:1.35}
 @media(max-width:699px){.idea-modal-bg{align-items:flex-end;padding:0}.idea-modal{border-radius:22px 22px 0 0;padding:18px 16px calc(24px + env(safe-area-inset-bottom))}
   #searchResults.list-mode .search-result-date{
     font-weight:500;
@@ -1234,9 +1237,9 @@ button{cursor:pointer}
   <div id="logEditor" class="log-wrap hidden">
     <div class="log-card">
       <label class="log-label">MORECT</label><div class="morect" id="morectBox"></div>
-      <div class="progress-pair"><div class="row"><input id="logTitle1" class="log-input" placeholder="제목 1"><input id="logRecord1" class="log-input" placeholder="기록 1"></div><div class="row"><input id="logTitle2" class="log-input" placeholder="제목 2"><input id="logRecord2" class="log-input" placeholder="기록 2"></div></div>
-      <label class="log-label">일정</label><input id="logSchedule" class="log-input" placeholder="일정">
       <label class="log-label">데일리 로그</label><textarea id="logDaily" class="log-textarea" placeholder="오늘의 로그"></textarea>
+      <label class="log-label">일정</label><input id="logSchedule" class="log-input" placeholder="일정">
+      <div class="progress-pair"><div class="row"><input id="logTitle1" class="log-input" placeholder="제목 1"><input id="logRecord1" class="log-input" placeholder="기록 1"></div><div class="row"><input id="logTitle2" class="log-input" placeholder="제목 2"><input id="logRecord2" class="log-input" placeholder="기록 2"></div></div>
       <div class="log-media-row"><span class="log-media-label">영화</span><input id="logMovie" class="log-input" placeholder="영화"><input id="logMovieHours" class="log-input log-hour" type="number" min="1" max="9" inputmode="numeric" placeholder="h"></div>
       <div class="log-media-row"><span class="log-media-label">시리즈</span><input id="logSeries" class="log-input" placeholder="시리즈"><input id="logSeriesHours" class="log-input log-hour" type="number" min="1" max="9" inputmode="numeric" placeholder="h"></div>
       <div class="log-media-row book"><span class="log-media-label">독서</span><input id="logBook" class="log-input" placeholder="독서"></div>
@@ -2014,17 +2017,29 @@ document.getElementById("searchTagBtn").onclick=()=>selectSearchTab(2);
 document.getElementById("searchListBtn").onclick=()=>selectSearchTab(3);
 document.getElementById("searchInput").oninput=runSearch;
 
-function logInputTitles(x){
-  const values=[];
-  const add=v=>{if(typeof v==="string"&&v.trim())values.push(v.trim())};
-  // 현재/이전 데이터 구조 모두 최대한 읽는다. 존재하지 않는 필드는 무시한다.
-  ["book","bookTitle","reading","readingTitle","movie","movieTitle","series","seriesTitle"].forEach(k=>add(x?.[k]));
+function logInputItems(x){
+  const items=[];
+  const add=(type,v)=>{if(typeof v==="string"&&v.trim())items.push({type,title:v.trim()})};
+  add("영화",x?.movie); add("영화",x?.movieTitle);
+  add("시리즈",x?.series); add("시리즈",x?.seriesTitle);
+  add("독서",x?.book); add("독서",x?.bookTitle); add("독서",x?.reading); add("독서",x?.readingTitle);
   [x?.input,x?.inputs,x?.in,x?.media].forEach(v=>{
-    if(Array.isArray(v))v.forEach(o=>{if(typeof o==="string")add(o);else if(o)add(o.title||o.name)});
-    else if(v&&typeof v==="object")Object.values(v).forEach(o=>{if(typeof o==="string")add(o);else if(o)add(o.title||o.name)});
+    const addObj=o=>{
+      if(typeof o==="string") add("인풋",o);
+      else if(o){
+        const rawType=String(o.type||o.kind||o.category||"").toLowerCase();
+        const type=rawType.includes("movie")||rawType.includes("영화")?"영화":
+          rawType.includes("series")||rawType.includes("drama")||rawType.includes("시리즈")||rawType.includes("드라마")?"시리즈":
+          rawType.includes("book")||rawType.includes("read")||rawType.includes("독서")||rawType.includes("책")?"독서":"인풋";
+        add(type,o.title||o.name);
+      }
+    };
+    if(Array.isArray(v))v.forEach(addObj);
+    else if(v&&typeof v==="object")Object.values(v).forEach(addObj);
   });
-  return values;
+  return items;
 }
+function logInputTitles(x){ return logInputItems(x).map(item=>item.title); }
 function closeSearchToDate(date){
   selectedDate=date;
   document.getElementById("searchPanel").classList.add("hidden");
@@ -2052,17 +2067,19 @@ function runSearch(){
     if(searchMode==="input"){
       const items=[];
       Object.entries(data.logs||{}).forEach(([date,x])=>{
-        const titles=logInputTitles(x);
-        titles.forEach(title=>{
-          if(!q || title.toLowerCase().includes(q)) items.push({date,title});
+        logInputItems(x).forEach(({type,title})=>{
+          if(!q || title.toLowerCase().includes(q)) items.push({date,type,title});
         });
       });
       items.sort((a,b)=>b.date.localeCompare(a.date));
-      items.forEach(({date,title})=>{
+      items.forEach(({date,type,title})=>{
         const div=document.createElement("div"); div.className="search-result";
+        const head=document.createElement("div"); head.className="input-result-head";
         const d=document.createElement("div"); d.className="search-result-date"; d.textContent=date;
+        const badge=document.createElement("span"); badge.className="input-type-badge"; badge.textContent=type;
+        head.append(d,badge);
         const p=document.createElement("div"); p.className="search-preview"; p.textContent=title;
-        div.append(d,p); div.onclick=()=>closeSearchToDate(date); box.appendChild(div);
+        div.append(head,p); div.onclick=()=>closeSearchToDate(date); box.appendChild(div);
       });
       return;
     }
