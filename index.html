@@ -601,7 +601,7 @@ button{cursor:pointer}
 .quick-tags{display:flex;gap:6px;flex-wrap:wrap}
 .quick-tag{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 10px;font-size:13px;color:var(--muted)}
 .quick-tag.active{background:var(--accent-soft);border-color:#bdc9b7;color:#53664f;font-weight:700}
-.diary-tag-row .tag-input{flex:1;min-width:150px;width:auto;margin-top:0}
+.diary-tag-row .tag-input{flex:1;min-width:0;width:auto;margin-top:0}.tag-delete-line{display:flex;align-items:center;gap:7px;flex:1;min-width:150px}.tag-delete-line .tag-input{flex:1}.day-delete-bottom{flex:0 0 44px;width:44px;height:42px;padding:0;border:0;border-radius:11px;background:var(--danger);color:#fff;font-size:24px;font-weight:500;line-height:1;display:flex;align-items:center;justify-content:center}
 @media(max-width:520px){
   .chip-create .plan-trash{min-width:42px;width:42px;padding:0;font-size:23px}
   .day-row{grid-template-columns:38px minmax(0,1fr) 26px;min-height:82px}
@@ -609,7 +609,7 @@ button{cursor:pointer}
   .week-dates{font-size:12px}
   .diary-tag-row{align-items:stretch}
   .quick-tags{width:100%}
-  .diary-tag-row .tag-input{width:100%;flex-basis:100%}
+  .tag-delete-line{width:100%;flex-basis:100%}.diary-tag-row .tag-input{width:auto;flex-basis:auto}
 }
 
 
@@ -911,10 +911,15 @@ button{cursor:pointer}
 .morect{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}.morect-check{height:42px;border:1px solid var(--line);background:var(--bg);border-radius:10px;font-weight:800;color:var(--muted)}.morect-check.on{background:var(--text);color:var(--panel);border-color:var(--text)}.morect-o{display:flex;flex-direction:column;gap:3px;align-items:center}.morect-o span{font-size:10px;font-weight:800;color:var(--muted)}.morect-o input{width:100%;height:27px;text-align:center;padding:2px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--text)}
 .progress-pair{display:grid;grid-template-columns:1fr;gap:6px;margin-top:9px}.progress-pair .row{display:grid;grid-template-columns:90px 1fr;gap:6px}
 .session{border:1px solid var(--line);border-radius:13px;padding:10px;margin:8px 0;background:var(--bg)}.session-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:12px;font-weight:800}.session-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}.session-type{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:5px}.type-chip{border:1px solid var(--line);background:var(--panel);border-radius:9px;padding:7px 3px;font-size:11px;font-weight:700;color:var(--muted)}.type-chip.on{background:var(--text);color:var(--panel);border-color:var(--text)}.session-del{border:0;background:transparent;color:var(--muted);font-size:18px}.log-add{width:100%;border:1px dashed var(--line);background:transparent;border-radius:11px;padding:10px;font-weight:800;color:var(--muted)}
-.log-tools{display:flex;gap:7px;flex-wrap:wrap}.log-tools button{flex:1;min-width:100px;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:9px;font-weight:800;color:var(--text)}.log-tools .danger{color:#a04b4b}.log-range{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px}.log-range input{min-width:0}
+.log-media-row{display:grid;grid-template-columns:72px minmax(0,1fr) 52px;gap:7px;align-items:center;margin-top:7px}.log-media-row.book{grid-template-columns:72px minmax(0,1fr)}.log-media-label{font-size:11px;font-weight:800;color:var(--muted)}.log-hour{text-align:center}.morect-number.has-value{color:#8f1d18!important;font-weight:900}.weekly-log-card{background:#f8f7f2}.weekly-log-card .log-textarea{min-height:76px}.idea-state-toggle{height:42px;min-width:48px;border:1px solid #aaa28f;border-radius:10px;background:#ddd7c8;color:var(--text);font:inherit;font-weight:900;display:flex;align-items:center;justify-content:center;padding:0 10px}.idea-state-toggle[data-state="ai"]{background:#cfc6b5}.idea-state-toggle[data-state="favorite"]{background:#c9c0ad}.data-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}.data-actions .danger-btn,#resetAll{background:var(--danger);border-color:var(--danger);color:#fff}.log-tools{display:flex;gap:7px;flex-wrap:wrap}.log-tools button{flex:1;min-width:100px;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:9px;font-weight:800;color:var(--text)}.log-tools .danger{color:#a04b4b}.log-range{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px}.log-range input{min-width:0}
 .month-row{display:grid;grid-template-columns:88px 1fr 32px;gap:8px;align-items:stretch;margin:7px 0}.month-head{border-radius:11px;background:var(--soft);display:flex;align-items:center;justify-content:center;text-align:center;font-size:12px;font-weight:800;white-space:pre-line}.month-minus{border:0;background:transparent;color:var(--muted);font-size:20px}
 @media(max-width:699px){.log-card{border-radius:14px;padding:11px;margin:8px 0}.morect{gap:4px}.morect-check{height:38px}.progress-pair .row{grid-template-columns:72px 1fr}.session-type{grid-template-columns:repeat(3,1fr)}.log-wrap{padding:0 2px 35px}.sub-tabs{margin-bottom:10px}.month-row{grid-template-columns:68px 1fr 28px;gap:5px}}
 
+
+/* final LOG/DAY responsive overrides */
+#deleteDiary.day-delete-bottom{width:44px!important;min-width:44px!important;height:42px!important;padding:0!important;border:0!important;border-radius:11px!important;background:var(--danger)!important;color:#fff!important;font-size:24px!important;font-weight:500!important;line-height:1!important}
+@media(max-width:520px){#deleteDiary.day-delete-bottom{width:42px!important;min-width:42px!important;height:40px!important;font-size:23px!important}}
+@media(min-width:700px){#logEditor>.log-card:first-child{display:block!important;grid-column:1/-1}#logEditor>.log-card:nth-child(2){grid-column:1/-1}.log-media-row{margin-top:8px}}
 </style>
 
 <style id="idea-pc-wide-adjust">
@@ -1147,6 +1152,12 @@ button{cursor:pointer}
 }
 </style>
 
+
+<style id="small-polish-20260926">
+#deleteDiary.day-delete-bottom{line-height:0!important;padding:0 0 3px!important;}
+.idea-state-toggle{background:var(--accent)!important;border-color:var(--accent)!important;color:rgba(255,255,255,.88)!important;}
+.idea-state-toggle[data-state="ai"],.idea-state-toggle[data-state="favorite"]{background:var(--accent)!important;border-color:var(--accent)!important;color:#fff!important;}
+</style>
 </head>
 
 <body>
@@ -1175,11 +1186,8 @@ button{cursor:pointer}
     </div>
     <div class="sub-tabs day-inline-tabs"><button id="dayInnerTab" class="active">DAY</button><button id="logInnerTab">LOG</button></div>
     <div class="day-actions">
-      <button class="icon-btn log-csv-top hidden" id="logCsvTop" aria-label="LOG CSV 내보내기">＋</button>
       <button class="icon-btn" id="searchToggle">⌕</button>
       <button class="icon-btn" id="diaryGridToggle" aria-label="최근 일기 미리보기">≡</button>
-      <button class="icon-btn day-delete-top" id="deleteDiary" aria-label="일기 삭제">−</button>
-      <button class="icon-btn log-trash-top hidden" id="logTrashTop" aria-label="LOG 비우기">−</button>
     </div>
   </div>
 
@@ -1211,7 +1219,7 @@ button{cursor:pointer}
         <button type="button" class="quick-tag" data-tag="특별">특별</button>
         <button type="button" class="quick-tag" data-tag="생각">생각</button>
       </div>
-      <input id="tagInput" class="tag-input" placeholder="태그 입력">
+      <div class="tag-delete-line"><input id="tagInput" class="tag-input" placeholder="태그 입력"><button class="plan-trash day-delete-bottom" id="deleteDiary" aria-label="일기 삭제">−</button></div>
     </div>
 
     <div id="saveState" class="save-state"></div>
@@ -1219,20 +1227,15 @@ button{cursor:pointer}
 
   <div id="logEditor" class="log-wrap hidden">
     <div class="log-card">
-      <div class="log-card-head"><h3>오늘 기록</h3><small id="logDateLabel"></small></div>
+      <label class="log-label">MORECT</label><div class="morect" id="morectBox"></div>
+      <div class="progress-pair"><div class="row"><input id="logTitle1" class="log-input" placeholder="제목 1"><input id="logRecord1" class="log-input" placeholder="기록 1"></div><div class="row"><input id="logTitle2" class="log-input" placeholder="제목 2"><input id="logRecord2" class="log-input" placeholder="기록 2"></div></div>
       <label class="log-label">일정</label><input id="logSchedule" class="log-input" placeholder="일정">
-      <label class="log-label">MORECT</label>
-      <div class="morect" id="morectBox"></div>
-      <div class="progress-pair">
-        <div class="row"><input id="logTitle1" class="log-input" placeholder="제목 1"><input id="logRecord1" class="log-input" placeholder="기록 1"></div>
-        <div class="row"><input id="logTitle2" class="log-input" placeholder="제목 2"><input id="logRecord2" class="log-input" placeholder="기록 2"></div>
-      </div>
       <label class="log-label">데일리 로그</label><textarea id="logDaily" class="log-textarea" placeholder="오늘의 로그"></textarea>
+      <div class="log-media-row"><span class="log-media-label">영화</span><input id="logMovie" class="log-input" placeholder="영화"><input id="logMovieHours" class="log-input log-hour" type="number" min="1" max="9" inputmode="numeric" placeholder="H"></div>
+      <div class="log-media-row"><span class="log-media-label">시리즈</span><input id="logSeries" class="log-input" placeholder="시리즈"><input id="logSeriesHours" class="log-input log-hour" type="number" min="1" max="9" inputmode="numeric" placeholder="H"></div>
+      <div class="log-media-row book"><span class="log-media-label">독서</span><input id="logBook" class="log-input" placeholder="독서"></div>
     </div>
-    <div class="log-card"><div class="log-card-head"><h3>메인</h3><small>작업할 때마다 추가</small></div><div id="mainSessions"></div><button id="addMainSession" class="log-add">＋ 메인 기록</button></div>
-    <div class="log-card"><div class="log-card-head"><h3>서브</h3><small>누적형</small></div><div id="subSession"></div></div>
-    <div class="log-card"><div class="log-card-head"><h3>IN &amp; DO</h3><small>누적형</small></div><div id="indoSession"></div></div>
-    
+    <div class="log-card weekly-log-card"><div class="log-card-head"><h3>주간</h3></div><label class="log-label">주간 진행</label><input id="logWeeklyProgress" class="log-input" placeholder="이번 주 진행"><label class="log-label">위클리 로그</label><textarea id="logWeeklyLog" class="log-textarea" placeholder="이번 주 로그"></textarea></div>
   </div>
 </section>
 
@@ -1304,10 +1307,10 @@ button{cursor:pointer}
     <div class="idea-meta">
       <div class="idea-field"><label>날짜</label><input id="ideaDate" type="date"></div>
       <div class="idea-field"><label>분류</label><select id="ideaCategory"></select></div>
-      <label class="idea-ai"><input id="ideaAI" type="checkbox"> AI</label>
+      <button type="button" class="idea-state-toggle" id="ideaStateToggle" data-state="normal" aria-label="IDEA 상태: 일반">✎</button>
     </div>
     <label>IDEA</label>
-    <textarea id="ideaText" placeholder="오늘의 컨셉을 기록하세요."></textarea>
+    <textarea id="ideaText" placeholder="오늘의 아이디어를 기록하세요."></textarea>
     <div class="idea-actions"><button class="idea-btn" id="ideaCancel" style="display:none">새 IDEA</button></div>
     <div class="idea-status" id="ideaStatus"></div>
   </div>
@@ -1315,7 +1318,7 @@ button{cursor:pointer}
     <div class="idea-filter-row">
       <input id="ideaSearch" type="search" placeholder="기록 검색">
       <select id="ideaFilterCat"><option value="">전체 분류</option></select>
-      <select id="ideaFilterAI"><option value="">전체 출처</option><option value="human">직접</option><option value="ai">AI</option></select>
+      <select id="ideaFilterAI"><option value="">전체</option><option value="normal">일반</option><option value="ai">AI</option><option value="favorite">즐겨찾기</option></select>
       <select id="ideaSort"><option value="new">최신순</option><option value="old">오래된순</option></select>
       <label class="idea-year"><input id="ideaThisYear" type="checkbox" checked> 올해만</label>
       <button class="idea-btn idea-settings-btn" id="ideaRandomBtn" aria-label="랜덤 IDEA" title="랜덤 IDEA">⚄</button>
@@ -1442,32 +1445,10 @@ button{cursor:pointer}
       </div>
     </div>
 
-    <div class="settings-card">
-      <h3>DAY MD 내보내기</h3>
-      <div class="export-row">
-        <input type="date" id="diaryExportFrom">
-        <input type="date" id="diaryExportTo">
-      </div>
-      <button class="soft-btn" id="diaryExport">MD 내보내기</button>
-    </div>
-
-    <div class="settings-card">
-      <h3>TODO 완료 MD 내보내기</h3>
-      <div class="export-row">
-        <input type="date" id="todoExportFrom">
-        <input type="date" id="todoExportTo">
-      </div>
-      <button class="soft-btn" id="todoExport">MD 내보내기</button>
-    </div>
-
-    <div class="settings-card">
-      <h3>IDEA MD 내보내기</h3>
-      <div class="export-row">
-        <input type="date" id="ideaExportFrom">
-        <input type="date" id="ideaExportTo">
-      </div>
-      <button class="soft-btn" id="ideaExport">MD 내보내기</button>
-    </div>
+    <div class="settings-card"><h3>DAY 데이터</h3><div class="export-row"><input type="date" id="diaryExportFrom"><input type="date" id="diaryExportTo"></div><div class="data-actions"><button class="soft-btn" id="diaryExport">MD 내보내기</button><button class="danger-btn" id="diaryDeleteRange">삭제</button></div></div>
+    <div class="settings-card"><h3>LOG 데이터</h3><div class="export-row"><input type="date" id="logExportFrom"><input type="date" id="logExportTo"></div><div class="data-actions"><button class="soft-btn" id="logMdExport">MD 내보내기</button><button class="soft-btn" id="logCsvExport">CSV 내보내기</button><button class="danger-btn" id="logDeleteRange">삭제</button></div></div>
+    <div class="settings-card"><h3>IDEA 데이터</h3><div class="export-row"><input type="date" id="ideaExportFrom"><input type="date" id="ideaExportTo"></div><div class="data-actions"><button class="soft-btn" id="ideaExport">MD 내보내기</button><button class="soft-btn" id="ideaCsvExport">CSV 내보내기</button><button class="danger-btn" id="ideaDeleteRange">삭제</button></div></div>
+    <div class="settings-card"><h3>TODO 데이터</h3><div class="export-row"><input type="date" id="todoExportFrom"><input type="date" id="todoExportTo"></div><div class="data-actions"><button class="soft-btn" id="todoExport">MD 내보내기</button><button class="soft-btn" id="todoCsvExport">CSV 내보내기</button><button class="danger-btn" id="todoDeleteRange">삭제</button></div></div>
   </div>
 </div>
 
@@ -1584,6 +1565,7 @@ const defaultData={
     monthly:{chips:[],months:[]}
   },
   logs:{},
+  logWeeks:{},
 
   annual:{segments:[],colors:{},order:[],hidden:[]},
 
@@ -1880,12 +1862,12 @@ restoreDiaryHeight();
 
 document.getElementById("prevDay").onclick=()=>{
   selectedDate=localDateString(addDays(parseDate(selectedDate),-1));
-  renderDiary();
+  renderDiary(); if(dayInnerMode==="log")renderLog();
 };
 
 document.getElementById("nextDay").onclick=()=>{
   selectedDate=localDateString(addDays(parseDate(selectedDate),1));
-  renderDiary();
+  renderDiary(); if(dayInnerMode==="log")renderLog();
 };
 
 document.getElementById("dateButton").onclick=()=>{
@@ -1899,7 +1881,7 @@ document.getElementById("dateButton").onclick=()=>{
 document.getElementById("datePicker").onchange=e=>{
   if(e.target.value){
     selectedDate=e.target.value;
-    renderDiary();
+    renderDiary(); if(dayInnerMode==="log")renderLog();
   }
 };
 
@@ -1963,7 +1945,6 @@ function closeDiaryGrid(){
   document.getElementById("diaryEditor").classList.remove("hidden");
   document.getElementById("dayDateNav").classList.remove("hidden");
   document.getElementById("searchToggle").classList.remove("hidden");
-  document.getElementById("deleteDiary").classList.remove("hidden");
   const btn=document.getElementById("diaryGridToggle");
   btn.textContent="≡";
   btn.setAttribute("aria-label","최근 일기 미리보기");
@@ -1978,7 +1959,6 @@ document.getElementById("diaryGridToggle").onclick=async()=>{
   document.getElementById("diaryEditor").classList.add("hidden");
   document.getElementById("dayDateNav").classList.add("hidden");
   document.getElementById("searchToggle").classList.add("hidden");
-  document.getElementById("deleteDiary").classList.add("hidden");
   panel.classList.remove("hidden");
   const btn=document.getElementById("diaryGridToggle");
   btn.textContent="←";
@@ -1987,131 +1967,141 @@ document.getElementById("diaryGridToggle").onclick=async()=>{
 };
 
 /* SEARCH */
+function configureSearchForMode(){
+  const isLog=dayInnerMode==="log";
+  const labels=isLog?["일정","로그","작품","인풋"]:["제목","본문","태그","목록"];
+  ["searchTitleBtn","searchContentBtn","searchTagBtn","searchListBtn"].forEach((id,i)=>document.getElementById(id).textContent=labels[i]);
+  if(isLog && !["schedule","daily","work","input"].includes(searchMode)) searchMode="schedule";
+  if(!isLog && !["title","content","tag","list"].includes(searchMode)) searchMode="title";
+  setSearchMode(searchMode,false);
+}
 
 document.getElementById("searchToggle").onclick=()=>{
   const panel=document.getElementById("searchPanel");
-  const editor=document.getElementById("diaryEditor");
+  const editor=dayInnerMode==="log"?document.getElementById("logEditor"):document.getElementById("diaryEditor");
   const opening=panel.classList.contains("hidden");
-
   panel.classList.toggle("hidden",!opening);
   editor.classList.toggle("hidden",opening);
   document.getElementById("dayDateNav").classList.toggle("hidden",opening);
-  document.getElementById("deleteDiary").classList.toggle("hidden",opening);
-  document.getElementById("diaryGridToggle").classList.toggle("hidden",opening);
+  document.getElementById("diaryGridToggle").classList.toggle("hidden",opening||dayInnerMode==="log");
   document.getElementById("searchToggle").textContent=opening?"←":"⌕";
-
-  if(opening){
-    document.getElementById("searchInput").focus();
-  }
+  document.getElementById("searchToggle").setAttribute("aria-label",opening?"검색 닫기":"검색");
+  if(opening){ configureSearchForMode(); document.getElementById("searchInput").focus(); }
 };
 
-function setSearchMode(mode){
+function setSearchMode(mode,run=true){
   searchMode=mode;
-  document.getElementById("searchTitleBtn").classList.toggle("active",mode==="title");
-  document.getElementById("searchContentBtn").classList.toggle("active",mode==="content");
-  document.getElementById("searchTagBtn").classList.toggle("active",mode==="tag");
-  document.getElementById("searchListBtn").classList.toggle("active",mode==="list");
+  const log=dayInnerMode==="log";
+  const modes=log?["schedule","daily","work","input"]:["title","content","tag","list"];
+  ["searchTitleBtn","searchContentBtn","searchTagBtn","searchListBtn"].forEach((id,i)=>document.getElementById(id).classList.toggle("active",mode===modes[i]));
   const input=document.getElementById("searchInput");
-  input.classList.toggle("hidden",mode==="list");
-  runSearch();
+  input.classList.toggle("hidden",!log&&mode==="list");
+  if(run) runSearch();
 }
-
-document.getElementById("searchTitleBtn").onclick=()=>setSearchMode("title");
-document.getElementById("searchContentBtn").onclick=()=>setSearchMode("content");
-document.getElementById("searchTagBtn").onclick=()=>setSearchMode("tag");
-document.getElementById("searchListBtn").onclick=()=>setSearchMode("list");
-
+function selectSearchTab(i){
+  const modes=dayInnerMode==="log"?["schedule","daily","work","input"]:["title","content","tag","list"];
+  setSearchMode(modes[i]);
+}
+document.getElementById("searchTitleBtn").onclick=()=>selectSearchTab(0);
+document.getElementById("searchContentBtn").onclick=()=>selectSearchTab(1);
+document.getElementById("searchTagBtn").onclick=()=>selectSearchTab(2);
+document.getElementById("searchListBtn").onclick=()=>selectSearchTab(3);
 document.getElementById("searchInput").oninput=runSearch;
 
+function logInputTitles(x){
+  const values=[];
+  const add=v=>{if(typeof v==="string"&&v.trim())values.push(v.trim())};
+  // 현재/이전 데이터 구조 모두 최대한 읽는다. 존재하지 않는 필드는 무시한다.
+  ["book","bookTitle","reading","readingTitle","movie","movieTitle","series","seriesTitle"].forEach(k=>add(x?.[k]));
+  [x?.input,x?.inputs,x?.in,x?.media].forEach(v=>{
+    if(Array.isArray(v))v.forEach(o=>{if(typeof o==="string")add(o);else if(o)add(o.title||o.name)});
+    else if(v&&typeof v==="object")Object.values(v).forEach(o=>{if(typeof o==="string")add(o);else if(o)add(o.title||o.name)});
+  });
+  return values;
+}
+function closeSearchToDate(date){
+  selectedDate=date;
+  document.getElementById("searchPanel").classList.add("hidden");
+  document.getElementById("dayDateNav").classList.remove("hidden");
+  document.getElementById("searchToggle").textContent="⌕";
+  document.getElementById("searchToggle").setAttribute("aria-label","검색");
+  if(dayInnerMode==="log"){
+    document.getElementById("logEditor").classList.remove("hidden");
+    document.getElementById("diaryEditor").classList.add("hidden");
+    document.getElementById("diaryGridToggle").classList.add("hidden");
+    renderLog();
+  }else{
+    document.getElementById("diaryEditor").classList.remove("hidden");
+    document.getElementById("logEditor").classList.add("hidden");
+    document.getElementById("diaryGridToggle").classList.remove("hidden");
+    renderDiary();
+  }
+}
 function runSearch(){
-  const q=document.getElementById("searchInput")
-    .value.trim().toLowerCase();
-
+  const q=document.getElementById("searchInput").value.trim().toLowerCase();
   const box=document.getElementById("searchResults");
-  box.classList.toggle("list-mode",searchMode==="list");
   box.innerHTML="";
-
+  if(dayInnerMode==="log"){
+    box.classList.remove("list-mode");
+    if(!q)return;
+    const results=Object.entries(data.logs||{}).filter(([date,x])=>{
+      if(searchMode==="work") return [x.title1,x.record1,x.title2,x.record2].some(v=>String(v||"").toLowerCase().includes(q));
+      if(searchMode==="schedule") return String(x.schedule||"").toLowerCase().includes(q);
+      if(searchMode==="daily") return String(x.daily||"").toLowerCase().includes(q);
+      return logInputTitles(x).some(v=>v.toLowerCase().includes(q));
+    }).sort((a,b)=>b[0].localeCompare(a[0]));
+    results.forEach(([date,x])=>{
+      const div=document.createElement("div"); div.className="search-result";
+      const d=document.createElement("div"); d.className="search-result-date"; d.textContent=date;
+      const p=document.createElement("div"); p.className="search-preview";
+      if(searchMode==="work") p.textContent=[[x.title1,x.record1],[x.title2,x.record2]].filter(a=>a.some(Boolean)).map(a=>a.filter(Boolean).join(" · ")).join(" / ");
+      else if(searchMode==="schedule") p.textContent=x.schedule||"";
+      else if(searchMode==="daily") p.textContent=x.daily||"";
+      else p.textContent=logInputTitles(x).join(" · ");
+      div.append(d,p); div.onclick=()=>closeSearchToDate(date); box.appendChild(div);
+    });
+    return;
+  }
+  box.classList.toggle("list-mode",searchMode==="list");
   if(!q && searchMode!=="list")return;
-
-  const results=Object.entries(data.diaries)
-    .filter(([date,e])=>{
-      if(searchMode==="list"){
-        return (e.title||"").trim()||(e.text||"").trim()||(e.tags||[]).length;
-      }
-      if(searchMode==="title"){
-        return (e.title||"").toLowerCase().includes(q);
-      }
-      if(searchMode==="content"){
-        return (e.text||"").toLowerCase().includes(q);
-      }
-      return (e.tags||[]).some(t=>t.toLowerCase().includes(q));
-    })
-    .sort((a,b)=>b[0].localeCompare(a[0]));
-
+  const results=Object.entries(data.diaries||{}).filter(([date,e])=>{
+    if(searchMode==="list")return (e.title||"").trim()||(e.text||"").trim()||(e.tags||[]).length;
+    if(searchMode==="title")return (e.title||"").toLowerCase().includes(q);
+    if(searchMode==="content")return (e.text||"").toLowerCase().includes(q);
+    return (e.tags||[]).some(t=>t.toLowerCase().includes(q));
+  }).sort((a,b)=>b[0].localeCompare(a[0]));
   results.forEach(([date,e])=>{
-    const div=document.createElement("div");
-    div.className="search-result";
-
-    const d=document.createElement("div");
-    d.className="search-result-date";
-    d.textContent=e.title?`${date} · ${e.title}`:date;
-
-    const p=document.createElement("div");
-    p.className="search-preview";
-    p.textContent=e.text||"";
-
-    const tags=document.createElement("div");
-    tags.className="tagline";
-    tags.textContent=(e.tags||[]).map(t=>"#"+t).join(" ");
-
-    if(searchMode==="list") div.append(d);
-    else div.append(d,p,tags);
-
-    div.onclick=()=>{
-      selectedDate=date;
-      renderDiary();
-      document.getElementById("searchPanel").classList.add("hidden");
-      document.getElementById("diaryEditor").classList.remove("hidden");
-      document.querySelector(".day-header .date-nav").classList.remove("hidden");
-      document.getElementById("deleteDiary").classList.remove("hidden");
-      document.getElementById("searchToggle").textContent="⌕";
-      document.getElementById("searchToggle").setAttribute("aria-label","검색");
-      document.getElementById("deleteDiary").classList.remove("hidden");
-      document.getElementById("diaryGridToggle").classList.remove("hidden");
-      document.querySelector(".date-nav").classList.remove("hidden");
-      document.getElementById("dayDateNav").classList.remove("hidden");
-      document.getElementById("deleteDiary").classList.remove("hidden");
-    };
-
-    box.appendChild(div);
+    const div=document.createElement("div"); div.className="search-result";
+    const d=document.createElement("div"); d.className="search-result-date"; d.textContent=e.title?`${date} · ${e.title}`:date;
+    const p=document.createElement("div"); p.className="search-preview"; p.textContent=e.text||"";
+    const tags=document.createElement("div"); tags.className="tagline"; tags.textContent=(e.tags||[]).map(t=>"#"+t).join(" ");
+    if(searchMode==="list")div.append(d);else div.append(d,p,tags);
+    div.onclick=()=>closeSearchToDate(date); box.appendChild(div);
   });
 }
 
-
 /* =========================================================
-   LOG (temporary sheet staging)
+   LOG
 ========================================================= */
 let dayInnerMode="day",logTimer=null;
-const LOG_TYPES=["탐색","설계","생성","편집","IN","DO"];
-function emptyLog(){return {schedule:"",morect:{M:false,O:"",R:false,E:false,C:false,T:false},title1:"",record1:"",title2:"",record2:"",daily:"",main:[],sub:{minutes:"",chars:"",type:""},indo:{minutes:"",chars:"",type:""}}}
-function currentLog(){data.logs??={};return data.logs[selectedDate]??(data.logs[selectedDate]=emptyLog())}
-function logHasValue(x){return x&&JSON.stringify(x)!==JSON.stringify(emptyLog())}
-async function saveLogSoon(){clearTimeout(logTimer);logTimer=setTimeout(async()=>{const x=currentLog();if(!logHasValue(x))delete data.logs[selectedDate];await saveAll()},250)}
-function bindLogField(id,key){const el=document.getElementById(id);el.oninput=()=>{currentLog()[key]=el.value;saveLogSoon()}}
-function typeButtons(obj,onchange){const box=document.createElement("div");box.className="session-type";LOG_TYPES.forEach(t=>{const b=document.createElement("button");b.className="type-chip"+(obj.type===t?" on":"");b.textContent=t;b.onclick=()=>{obj.type=obj.type===t?"":t;onchange();renderLog()};box.appendChild(b)});return box}
-function sessionEditor(obj,label,removable,index){const box=document.createElement("div");box.className="session";const top=document.createElement("div");top.className="session-top";if(label){const badge=document.createElement("span");badge.className="session-badge";badge.textContent=label;top.appendChild(badge)}if(removable){const d=document.createElement("button");d.className="session-del";d.textContent="×";d.onclick=async()=>{currentLog().main.splice(index,1);await saveAll();renderLog()};top.appendChild(d)}const grid=document.createElement("div");grid.className="session-grid";const min=document.createElement("input");min.className="log-input";min.type="number";min.inputMode="decimal";min.placeholder="분";min.value=obj.minutes??"";min.oninput=()=>{obj.minutes=min.value;saveLogSoon()};const chars=document.createElement("input");chars.className="log-input";chars.type="number";chars.inputMode="numeric";chars.placeholder="글자";chars.value=obj.chars??"";chars.oninput=()=>{obj.chars=chars.value;saveLogSoon()};grid.append(min,chars,typeButtons(obj,saveLogSoon));box.append(top,grid);return box}
-function renderLog(){if(!document.getElementById("logEditor"))return;const x=currentLog();document.getElementById("logDateLabel").textContent=formatKoreanDate(selectedDate);document.getElementById("logSchedule").value=x.schedule||"";document.getElementById("logTitle1").value=x.title1||"";document.getElementById("logRecord1").value=x.record1||"";document.getElementById("logTitle2").value=x.title2||"";document.getElementById("logRecord2").value=x.record2||"";document.getElementById("logDaily").value=x.daily||"";const m=document.getElementById("morectBox");m.innerHTML="";["M","O","R","E","C","T"].forEach(k=>{if(k==="O"){const i=document.createElement("input");i.className="morect-number";i.type="number";i.step="0.1";i.inputMode="decimal";i.placeholder="";i.value=x.morect.O??"";i.oninput=()=>{x.morect.O=i.value;saveLogSoon()};m.appendChild(i)}else{const b=document.createElement("button");b.className="morect-check"+(x.morect[k]?" on":"");b.textContent=k;b.onclick=()=>{x.morect[k]=!x.morect[k];saveLogSoon();renderLog()};m.appendChild(b)}});const mains=document.getElementById("mainSessions");mains.innerHTML="";x.main.forEach((o,i)=>mains.appendChild(sessionEditor(o,`${i+1}`,true,i)));const sub=document.getElementById("subSession");sub.innerHTML="";sub.appendChild(sessionEditor(x.sub,"",false));const indo=document.getElementById("indoSession");indo.innerHTML="";indo.appendChild(sessionEditor(x.indo,"",false));}
+function emptyLog(){return {schedule:"",morect:{M:false,O:"",R:false,E:false,C:false,T:false},title1:"",record1:"",title2:"",record2:"",daily:"",movie:"",movieHours:"",series:"",seriesHours:"",book:""}}
+function currentLog(){data.logs??={};const cur=data.logs[selectedDate]??{};return data.logs[selectedDate]={...emptyLog(),...cur,morect:{...emptyLog().morect,...(cur.morect||{})}}}
+function logHasValue(x){if(!x)return false;const y={...x};delete y.main;delete y.sub;delete y.indo;return JSON.stringify({...emptyLog(),...y,morect:{...emptyLog().morect,...(y.morect||{})}})!==JSON.stringify(emptyLog())}
+function weekKey(dateStr){const d=new Date(dateStr+"T12:00:00");const day=(d.getDay()+6)%7;d.setDate(d.getDate()-day);return localDateString(d)}
+function currentWeekly(){data.logWeeks??={};const key=weekKey(selectedDate);return data.logWeeks[key]??(data.logWeeks[key]={progress:"",weeklyLog:""})}
+async function saveLogSoon(){clearTimeout(logTimer);logTimer=setTimeout(async()=>{const x=currentLog();if(!logHasValue(x))delete data.logs[selectedDate];const w=currentWeekly();if(!String(w.progress||"").trim()&&!String(w.weeklyLog||"").trim())delete data.logWeeks[weekKey(selectedDate)];await saveAll()},250)}
+function bindLogField(id,key,weekly=false){const el=document.getElementById(id);el.oninput=()=>{(weekly?currentWeekly():currentLog())[key]=el.value;saveLogSoon()}}
+function renderLog(){if(!document.getElementById("logEditor"))return;const x=currentLog(),w=currentWeekly();[["logSchedule","schedule"],["logTitle1","title1"],["logRecord1","record1"],["logTitle2","title2"],["logRecord2","record2"],["logDaily","daily"],["logMovie","movie"],["logMovieHours","movieHours"],["logSeries","series"],["logSeriesHours","seriesHours"],["logBook","book"]].forEach(([id,k])=>document.getElementById(id).value=x[k]||"");document.getElementById("logWeeklyProgress").value=w.progress||"";document.getElementById("logWeeklyLog").value=w.weeklyLog||"";const m=document.getElementById("morectBox");m.innerHTML="";["M","O","R","E","C","T"].forEach(k=>{if(k==="O"){const i=document.createElement("input");i.className="morect-number"+(String(x.morect.O??"").trim()!==""?" has-value":"");i.type="number";i.step="0.1";i.inputMode="decimal";i.value=x.morect.O??"";i.oninput=()=>{x.morect.O=i.value;i.classList.toggle("has-value",String(i.value).trim()!=="");saveLogSoon()};m.appendChild(i)}else{const b=document.createElement("button");b.className="morect-check"+(x.morect[k]?" on":"");b.textContent=k;b.onclick=()=>{x.morect[k]=!x.morect[k];saveLogSoon();renderLog()};m.appendChild(b)}})}
 window.renderLog=renderLog;
-[ ["logSchedule","schedule"],["logTitle1","title1"],["logRecord1","record1"],["logTitle2","title2"],["logRecord2","record2"],["logDaily","daily"] ].forEach(x=>bindLogField(...x));
-document.getElementById("addMainSession").onclick=async()=>{const x=currentLog();if(x.main.length>=8){alert("메인 기록은 최대 8개입니다.");return}x.main.push({minutes:"",chars:"",type:""});await saveAll();renderLog()};
-function setDayInner(mode){dayInnerMode=mode;document.getElementById("dayInnerTab").classList.toggle("active",mode==="day");document.getElementById("logInnerTab").classList.toggle("active",mode==="log");document.getElementById("diaryGridPanel").classList.add("hidden");document.getElementById("diaryEditor").classList.toggle("hidden",mode!=="day");document.getElementById("logEditor").classList.toggle("hidden",mode!=="log");document.getElementById("searchToggle").classList.toggle("hidden",mode!=="day");document.getElementById("diaryGridToggle").classList.toggle("hidden",mode!=="day");document.getElementById("deleteDiary").classList.toggle("hidden",mode!=="day");document.getElementById("logTrashTop").classList.toggle("hidden",mode!=="log");document.getElementById("logCsvTop").classList.toggle("hidden",mode!=="log");document.getElementById("searchPanel").classList.add("hidden");document.getElementById("dayDateNav").classList.remove("hidden");document.getElementById("diaryGridToggle").textContent="≡";if(mode==="log")renderLog()}
+[["logSchedule","schedule"],["logTitle1","title1"],["logRecord1","record1"],["logTitle2","title2"],["logRecord2","record2"],["logDaily","daily"],["logMovie","movie"],["logMovieHours","movieHours"],["logSeries","series"],["logSeriesHours","seriesHours"],["logBook","book"]].forEach(x=>bindLogField(...x));bindLogField("logWeeklyProgress","progress",true);bindLogField("logWeeklyLog","weeklyLog",true);
+function setDayInner(mode){dayInnerMode=mode;document.getElementById("dayInnerTab").classList.toggle("active",mode==="day");document.getElementById("logInnerTab").classList.toggle("active",mode==="log");document.getElementById("diaryGridPanel").classList.add("hidden");document.getElementById("searchPanel").classList.add("hidden");document.getElementById("diaryEditor").classList.toggle("hidden",mode!=="day");document.getElementById("logEditor").classList.toggle("hidden",mode!=="log");document.getElementById("diaryGridToggle").classList.toggle("hidden",mode!=="day");document.getElementById("dayDateNav").classList.remove("hidden");document.getElementById("searchToggle").classList.remove("hidden");document.getElementById("searchToggle").textContent="⌕";document.getElementById("searchToggle").setAttribute("aria-label","검색");document.getElementById("diaryGridToggle").textContent="≡";configureSearchForMode();if(mode==="log")renderLog()}
 document.getElementById("dayInnerTab").onclick=()=>setDayInner("day");document.getElementById("logInnerTab").onclick=()=>setDayInner("log");
 function csvCell(v){v=String(v??"");return /[",\n]/.test(v)?`"${v.replace(/"/g,'""')}"`:v}
-function logRows(from,to){return Object.keys(data.logs||{}).filter(d=>d>=from&&d<=to).sort().map(d=>{const x=data.logs[d],row=[d,x.daily||"",x.schedule,x.morect.M?"TRUE":"FALSE",x.morect.O,x.morect.R?"TRUE":"FALSE",x.morect.E?"TRUE":"FALSE",x.morect.C?"TRUE":"FALSE",x.morect.T?"TRUE":"FALSE",x.title1,x.record1,x.title2,x.record2];for(let i=0;i<8;i++){const o=x.main[i]||{};row.push(o.minutes||"",o.chars||"",o.type||"")}row.push(x.sub?.minutes||"",x.sub?.chars||"",x.sub?.type||"",x.indo?.minutes||"",x.indo?.chars||"",x.indo?.type||"");return row})}
-function logHeaders(){const h=["날짜","데일리 로그","일정","M","O","R","E","C","T","제목1","기록1","제목2","기록2"];for(let i=1;i<=8;i++)h.push(`메인${i} M`,`메인${i} TEXT`,`메인${i} DONE`);h.push("서브 M","서브 TEXT","서브 DONE","IN&DO M","IN&DO TEXT","IN&DO DONE");return h}
+function weekRangeLabel(key){const a=parseDate(key),b=addDays(a,6);return `${key} ~ ${localDateString(b)}`}
+function morectCsv(x){const m=x?.morect||{};return `M:${m.M?"TRUE":"FALSE"} O:${m.O??""} R:${m.R?"TRUE":"FALSE"} E:${m.E?"TRUE":"FALSE"} C:${m.C?"TRUE":"FALSE"} T:${m.T?"TRUE":"FALSE"}`}
+function logRows(from,to){return Object.keys(data.logs||{}).filter(d=>d>=from&&d<=to).sort().map(d=>{const x={...emptyLog(),...(data.logs[d]||{})},wk=weekKey(d),w=data.logWeeks?.[wk]||{};return [d,x.schedule||"",morectCsv(x),x.title1||"",x.record1||"",x.title2||"",x.record2||"",x.daily||"",weekRangeLabel(wk),w.progress||"",w.weeklyLog||""]})}
+function logHeaders(){return ["날짜","일정","MORECT","작품 1","작품 1 내용","작품 2","작품 2 내용","데일리로그","주간 날짜","주간 진도","위클리 로그"]}
 function getLogRange(){const dates=Object.keys(data.logs||{}).sort();return [dates[0]||selectedDate,dates.at(-1)||selectedDate]}
-document.getElementById("logCsvTop").onclick=()=>{const [f,t]=getLogRange(),rows=logRows(f,t);downloadText(`DAY_LOG_${f}_${t}.csv`,[logHeaders(),...rows].map(r=>r.map(csvCell).join(",")).join("\n"),"text/csv;charset=utf-8")};
-document.getElementById("logTrashTop").onclick=async()=>{if(await confirmBox("저장된 LOG 전체를 비울까요? CSV로 옮긴 것을 확인한 뒤 삭제하세요.")){data.logs={};await saveAll();renderLog()}};
 
 /* =========================================================
    PLAN
@@ -3221,11 +3211,11 @@ function updateStats(){
 function setDefaultExportDates(){
   const year=new Date().getFullYear();
 
-  ["diaryExportFrom","todoExportFrom","ideaExportFrom"].forEach(id=>{
+  ["diaryExportFrom","logExportFrom","ideaExportFrom","todoExportFrom"].forEach(id=>{
     document.getElementById(id).value=`${year}-01-01`;
   });
 
-  ["diaryExportTo","todoExportTo","ideaExportTo"].forEach(id=>{
+  ["diaryExportTo","logExportTo","ideaExportTo","todoExportTo"].forEach(id=>{
     document.getElementById(id).value=`${year}-12-31`;
   });
 }
@@ -3396,6 +3386,19 @@ document.getElementById("todoExport").onclick=()=>{
   );
 };
 
+
+/* PER-DATA EXPORT / DELETE */
+function validRange(fromId,toId){const from=document.getElementById(fromId).value,to=document.getElementById(toId).value;if(!from||!to)return null;if(from>to){alert("기간을 확인해주세요.");return null}return [from,to]}
+function csvDownload(name,rows){const csv="\uFEFF"+rows.map(r=>r.map(csvCell).join(",")).join("\r\n");downloadText(name,csv,"text/csv;charset=utf-8")}
+document.getElementById("diaryDeleteRange").onclick=async()=>{const r=validRange("diaryExportFrom","diaryExportTo");if(!r)return;const [from,to]=r;if(!await confirmBox(`${from} ~ ${to} DAY 데이터를 삭제할까요?`))return;Object.keys(data.diaries||{}).forEach(d=>{if(d>=from&&d<=to)delete data.diaries[d]});await saveAll();renderDiary();updateStats()};
+document.getElementById("logMdExport").onclick=()=>{const r=validRange("logExportFrom","logExportTo");if(!r)return;const [from,to]=r;let md="";for(const d of Object.keys(data.logs||{}).filter(d=>d>=from&&d<=to).sort()){const x={...emptyLog(),...(data.logs[d]||{})};md+=`## ${d}\n\n`;if(x.schedule)md+=`- 일정: ${x.schedule}\n`;md+=`- MORECT: ${morectCsv(x)}\n`;if(x.title1||x.record1)md+=`- 작품 1: ${x.title1||""}${x.record1?` / ${x.record1}`:""}\n`;if(x.title2||x.record2)md+=`- 작품 2: ${x.title2||""}${x.record2?` / ${x.record2}`:""}\n`;if(x.daily)md+=`\n${x.daily}\n`;if(x.movie)md+=`\n- 영화: ${x.movie}${x.movieHours?` (${x.movieHours}시간)`:""}`;if(x.series)md+=`\n- 시리즈: ${x.series}${x.seriesHours?` (${x.seriesHours}시간)`:""}`;if(x.book)md+=`\n- 독서: ${x.book}`;md+="\n\n"}const weeks=Object.keys(data.logWeeks||{}).filter(k=>k>=from&&k<=to).sort();if(weeks.length){md+="# 주간 기록\n\n";for(const k of weeks){const w=data.logWeeks[k];md+=`## ${k}\n\n- 주간 진행: ${w.progress||""}\n\n${w.weeklyLog||""}\n\n`}}downloadText(`LOG_${from}_${to}.md`,md.trim()+"\n","text/markdown")};
+document.getElementById("logCsvExport").onclick=()=>{const r=validRange("logExportFrom","logExportTo");if(!r)return;const [from,to]=r;csvDownload(`LOG_${from}_${to}.csv`,[logHeaders(),...logRows(from,to)])};
+document.getElementById("logDeleteRange").onclick=async()=>{const r=validRange("logExportFrom","logExportTo");if(!r)return;const [from,to]=r;if(!await confirmBox(`${from} ~ ${to} LOG 데이터를 삭제할까요?`))return;Object.keys(data.logs||{}).forEach(d=>{if(d>=from&&d<=to)delete data.logs[d]});Object.keys(data.logWeeks||{}).forEach(k=>{if(k>=from&&k<=to)delete data.logWeeks[k]});await saveAll();if(dayInnerMode==="log")renderLog()};
+document.getElementById("ideaCsvExport").onclick=()=>{const r=validRange("ideaExportFrom","ideaExportTo");if(!r)return;const [from,to]=r;const rows=[["날짜","분류","상태","IDEA"],...(data.idea?.entries||[]).filter(e=>e.date>=from&&e.date<=to).sort((a,b)=>String(a.date).localeCompare(String(b.date))||((a.createdAt||0)-(b.createdAt||0))).map(e=>[e.date,(data.idea.categories||[]).find(c=>c.id===e.categoryId)?.name||"미분류",e.state||(e.favorite?"즐겨찾기":e.ai?"AI":"일반"),e.text||""])];csvDownload(`IDEA_${from}_${to}.csv`,rows)};
+document.getElementById("ideaDeleteRange").onclick=async()=>{const r=validRange("ideaExportFrom","ideaExportTo");if(!r)return;const [from,to]=r;if(!await confirmBox(`${from} ~ ${to} IDEA 데이터를 삭제할까요?`))return;data.idea.entries=(data.idea.entries||[]).filter(e=>!(e.date>=from&&e.date<=to));await saveAll();if(window.renderIdea)window.renderIdea();updateStats()};
+document.getElementById("todoCsvExport").onclick=()=>{const r=validRange("todoExportFrom","todoExportTo");if(!r)return;const [from,to]=r;const rows=[["완료 날짜","내용","원래 목록"],...(data.todo?.completed||[]).filter(e=>e.completedDate>=from&&e.completedDate<=to).sort((a,b)=>a.completedDate.localeCompare(b.completedDate)).map(e=>[e.completedDate,e.title||"",e.from||e.list||""])];csvDownload(`TODO_${from}_${to}.csv`,rows)};
+document.getElementById("todoDeleteRange").onclick=async()=>{const r=validRange("todoExportFrom","todoExportTo");if(!r)return;const [from,to]=r;if(!await confirmBox(`${from} ~ ${to} 완료 TODO 데이터를 삭제할까요?`))return;data.todo.completed=(data.todo.completed||[]).filter(e=>!(e.completedDate>=from&&e.completedDate<=to));await saveAll();renderTodo();updateStats()};
+
 /* RESET */
 
 document.getElementById("resetAll").onclick=async()=>{
@@ -3546,6 +3549,7 @@ function normalizeLoadedData(){
   data.idea ??={};
   if(!Array.isArray(data.idea.categories)||!data.idea.categories.length) data.idea.categories=["컨셉","소재","생각","대사"].map((name,i)=>({id:"idea-cat-"+(i+1),name}));
   if(!Array.isArray(data.idea.entries)) data.idea.entries=[];
+  data.idea.entries.forEach(e=>{if(!e.state)e.state=e.favorite?"favorite":e.ai?"ai":"normal";e.ai=e.state==="ai";e.favorite=e.state==="favorite";});
   data.idea.settings ??={thisYear:true};
   if(data.idea.settings.thisYear===undefined) data.idea.settings.thisYear=true;
   data.plan ??={};
@@ -3559,6 +3563,7 @@ function normalizeLoadedData(){
   data.plan.monthly.chips ??=[];
   data.plan.monthly.months ??=[];
   data.logs ??={};
+  data.logWeeks ??={};
 
   data.annual ??={segments:[]};
   data.annual.segments ??=[];
@@ -3594,9 +3599,6 @@ function renderAll(){
 
   document.getElementById("scheduleDate").value=localDateString();
   renderAll();
-  const logDates=Object.keys(data.logs||{}).sort();
-  document.getElementById("logFrom").value=logDates[0]||selectedDate;
-  document.getElementById("logTo").value=logDates.at(-1)||selectedDate;
 
   /* PLAN is deliberately the default screen */
 })();
@@ -3614,23 +3616,25 @@ function cats(){return data.idea.categories} function entries(){return data.idea
 function catName(id){return cats().find(c=>c.id===id)?.name||"미분류"}
 function status(t){el("ideaStatus").textContent=t||"";if(t)setTimeout(()=>{if(el("ideaStatus").textContent===t)el("ideaStatus").textContent=""},2200)}
 function renderCats(){const cur=el("ideaCategory").value;el("ideaCategory").innerHTML=cats().map(c=>`<option value="${esc(c.id)}">${esc(c.name)}</option>`).join("");if(cats().some(c=>c.id===cur))el("ideaCategory").value=cur;el("ideaFilterCat").innerHTML='<option value="">전체 분류</option>'+cats().map(c=>`<option value="${esc(c.id)}">${esc(c.name)}</option>`).join("");}
-function filtered(){const q=el("ideaSearch").value.trim().toLowerCase(),c=el("ideaFilterCat").value,a=el("ideaFilterAI").value,old=el("ideaSort").value==="old",thisYear=el("ideaThisYear").checked,year=String(new Date().getFullYear());return entries().filter(e=>(!thisYear||String(e.date).startsWith(year+"-"))&&(!q||String(e.text).toLowerCase().includes(q))&&(!c||e.categoryId===c)&&(!a||(a==="ai"?!!e.ai:!e.ai))).sort((x,y)=>{const d=String(x.date).localeCompare(String(y.date)),t=(x.createdAt||0)-(y.createdAt||0);return old?(d||t):-(d||t)});}
-function render(){const list=filtered();el("ideaList").innerHTML=list.length?list.map(e=>`<article class="idea-entry" data-edit="${esc(e.id)}"><div class="idea-entry-head"><span>${esc(e.date)}</span><span class="idea-cat">[${esc(catName(e.categoryId))}]</span>${e.ai?'<span class="idea-ai-mark">(AI)</span>':''}<span class="idea-entry-actions"><button data-editbtn="${esc(e.id)}">수정</button><button data-del="${esc(e.id)}">삭제</button></span></div><div class="idea-entry-text">${esc(e.text)}</div></article>`).join(""):'<div class="idea-empty">아직 IDEA가 없습니다.</div>';}
+function entryState(e){return e.state||(e.favorite?"favorite":e.ai?"ai":"normal")}
+function setIdeaState(state){const b=el("ideaStateToggle");b.dataset.state=state;b.textContent=state==="ai"?"AI":state==="favorite"?"★":"✎";b.setAttribute("aria-label","IDEA 상태: "+(state==="ai"?"AI":state==="favorite"?"즐겨찾기":"일반"))}
+function filtered(){const q=el("ideaSearch").value.trim().toLowerCase(),c=el("ideaFilterCat").value,a=el("ideaFilterAI").value,old=el("ideaSort").value==="old",thisYear=el("ideaThisYear").checked,year=String(new Date().getFullYear());return entries().filter(e=>(!thisYear||String(e.date).startsWith(year+"-"))&&(!q||String(e.text).toLowerCase().includes(q))&&(!c||e.categoryId===c)&&(!a||entryState(e)===a)).sort((x,y)=>{const d=String(x.date).localeCompare(String(y.date)),t=(x.createdAt||0)-(y.createdAt||0);return old?(d||t):-(d||t)});}
+function render(){const list=filtered();el("ideaList").innerHTML=list.length?list.map(e=>{const st=entryState(e),mark=st==="ai"?'<span class="idea-ai-mark">(AI)</span>':st==="favorite"?'<span class="idea-ai-mark">★</span>':'';return `<article class="idea-entry" data-edit="${esc(e.id)}"><div class="idea-entry-head"><span>${esc(e.date)}</span><span class="idea-cat">[${esc(catName(e.categoryId))}]</span>${mark}<span class="idea-entry-actions"><button data-editbtn="${esc(e.id)}">수정</button><button data-del="${esc(e.id)}">삭제</button></span></div><div class="idea-entry-text">${esc(e.text)}</div></article>`}).join(""):'<div class="idea-empty">아직 IDEA가 없습니다.</div>';}
 window.renderIdea=render;
-function resetForm(){editing=null;el("ideaDate").value=localDateString();el("ideaAI").checked=false;el("ideaText").value="";el("ideaCancel").style.display="none";status("내용을 입력하면 자동으로 저장됩니다.")}
-function edit(id){const e=entries().find(x=>x.id===id);if(!e)return;editing=id;el("ideaDate").value=e.date;el("ideaCategory").value=e.categoryId;el("ideaAI").checked=!!e.ai;el("ideaText").value=e.text;el("ideaCancel").style.display="inline-block";el("ideaText").focus();window.scrollTo({top:0,behavior:"smooth"})}
-async function autoSave(){if(saving)return;const text=el("ideaText").value.trim();if(!text){status("내용을 입력하면 자동으로 저장됩니다.");return}saving=true;const obj={date:el("ideaDate").value||localDateString(),categoryId:el("ideaCategory").value,ai:el("ideaAI").checked,text,updatedAt:Date.now()};if(editing){const i=entries().findIndex(e=>e.id===editing);if(i>=0)entries()[i]={...entries()[i],...obj};else editing=null}if(!editing){const id=uid();entries().push({id,createdAt:Date.now(),...obj});editing=id;el("ideaCancel").style.display="inline-block"}await saveAll();render();status("자동 저장됨");saving=false}
+function resetForm(){editing=null;el("ideaDate").value=localDateString();setIdeaState("normal");el("ideaText").value="";el("ideaCancel").style.display="none";status("내용을 입력하면 자동으로 저장됩니다.")}
+function edit(id){const e=entries().find(x=>x.id===id);if(!e)return;editing=id;el("ideaDate").value=e.date;el("ideaCategory").value=e.categoryId;setIdeaState(entryState(e));el("ideaText").value=e.text;el("ideaCancel").style.display="inline-block";el("ideaText").focus();window.scrollTo({top:0,behavior:"smooth"})}
+async function autoSave(){if(saving)return;const text=el("ideaText").value.trim();if(!text){status("내용을 입력하면 자동으로 저장됩니다.");return}saving=true;const state=el("ideaStateToggle").dataset.state||"normal";const obj={date:el("ideaDate").value||localDateString(),categoryId:el("ideaCategory").value,state,ai:state==="ai",favorite:state==="favorite",text,updatedAt:Date.now()};if(editing){const i=entries().findIndex(e=>e.id===editing);if(i>=0)entries()[i]={...entries()[i],...obj};else editing=null}if(!editing){const id=uid();entries().push({id,createdAt:Date.now(),...obj});editing=id;el("ideaCancel").style.display="inline-block"}await saveAll();render();status("자동 저장됨");saving=false}
 function schedule(){clearTimeout(timer);timer=setTimeout(autoSave,450)}
-function showRandom(){if(!entries().length){alert("저장된 IDEA가 없습니다.");return}const e=entries()[Math.floor(Math.random()*entries().length)];el("ideaRandomBody").innerHTML=`<div class="idea-random-card"><div class="idea-random-meta">${esc(e.date)} · ${esc(catName(e.categoryId))}${e.ai?' · AI':''}</div><div class="idea-random-text">${esc(e.text)}</div><div class="idea-random-actions"><button class="idea-btn" id="ideaRandomAgain">다시 뽑기</button></div></div>`;el("ideaRandomModal").classList.remove("hidden");el("ideaRandomAgain").onclick=showRandom;}
+function showRandom(){if(!entries().length){alert("저장된 IDEA가 없습니다.");return}const e=entries()[Math.floor(Math.random()*entries().length)];el("ideaRandomBody").innerHTML=`<div class="idea-random-card"><div class="idea-random-meta">${esc(e.date)} · ${esc(catName(e.categoryId))}${entryState(e)==='ai'?' · AI':entryState(e)==='favorite'?' · ★':''}</div><div class="idea-random-text">${esc(e.text)}</div><div class="idea-random-actions"><button class="idea-btn" id="ideaRandomAgain">다시 뽑기</button></div></div>`;el("ideaRandomModal").classList.remove("hidden");el("ideaRandomAgain").onclick=showRandom;}
 function renderCategorySettings(){const box=el("ideaCatList");if(!box)return;box.innerHTML="";cats().forEach((c,index)=>{const row=document.createElement("div");row.className="tag-preset-item";const input=document.createElement("input");input.value=c.name;const actions=document.createElement("div");actions.className="tag-preset-actions";const up=document.createElement("button");up.textContent="↑";const down=document.createElement("button");down.textContent="↓";const save=document.createElement("button");save.textContent="수정";const del=document.createElement("button");del.textContent="삭제";del.className="preset-delete";up.disabled=index===0;down.disabled=index===cats().length-1;up.onclick=async()=>{[cats()[index-1],cats()[index]]=[cats()[index],cats()[index-1]];await saveAll();renderCats();renderCategorySettings()};down.onclick=async()=>{[cats()[index+1],cats()[index]]=[cats()[index],cats()[index+1]];await saveAll();renderCats();renderCategorySettings()};save.onclick=async()=>{const n=input.value.trim();if(!n||cats().some(x=>x.id!==c.id&&x.name===n)){input.value=c.name;return}c.name=n;await saveAll();renderCats();render();renderCategorySettings()};del.onclick=async()=>{if(cats().length<=1)return;if(entries().some(x=>x.categoryId===c.id)){alert("이 분류를 사용하는 IDEA가 있습니다. 먼저 분류를 바꿔 주세요.");return}cats().splice(index,1);await saveAll();renderCats();renderCategorySettings()};actions.append(up,down,save,del);row.append(input,actions);box.appendChild(row)});}
 window.renderIdeaCategorySettings=renderCategorySettings;
 el("ideaAddCat").onclick=async()=>{const n=el("ideaNewCat").value.trim();if(!n||cats().some(c=>c.name===n))return;cats().push({id:uid(),name:n});el("ideaNewCat").value="";await saveAll();renderCats();renderCategorySettings()};
 el("ideaNewCat").addEventListener("keydown",e=>{if(e.key==="Enter")el("ideaAddCat").click()});
-el("ideaCancel").onclick=resetForm;el("ideaText").addEventListener("input",schedule);["ideaDate","ideaCategory","ideaAI"].forEach(id=>el(id).addEventListener("change",schedule));["ideaSearch","ideaFilterCat","ideaFilterAI","ideaSort"].forEach(id=>el(id).addEventListener(id==="ideaSearch"?"input":"change",render));
+el("ideaCancel").onclick=resetForm;el("ideaText").addEventListener("input",schedule);["ideaDate","ideaCategory"].forEach(id=>el(id).addEventListener("change",schedule));el("ideaStateToggle").onclick=()=>{const order=["normal","ai","favorite"],cur=el("ideaStateToggle").dataset.state||"normal";setIdeaState(order[(order.indexOf(cur)+1)%order.length]);schedule()};["ideaSearch","ideaFilterCat","ideaFilterAI","ideaSort"].forEach(id=>el(id).addEventListener(id==="ideaSearch"?"input":"change",render));
 el("ideaThisYear").checked=data.idea.settings.thisYear!==false;el("ideaThisYear").addEventListener("change",async()=>{data.idea.settings.thisYear=el("ideaThisYear").checked;await saveAll();render()});
 el("ideaList").onclick=async e=>{const d=e.target.closest("[data-del]");if(d){e.stopPropagation();if(confirm("이 IDEA를 삭제할까요?")){data.idea.entries=data.idea.entries.filter(x=>x.id!==d.dataset.del);await saveAll();if(editing===d.dataset.del)resetForm();render()}return}const ed=e.target.closest("[data-editbtn]")||e.target.closest("[data-edit]");if(ed)edit(ed.dataset.editbtn||ed.dataset.edit)};
 el("ideaRandomBtn").onclick=showRandom;el("ideaRandomClose").onclick=()=>el("ideaRandomModal").classList.add("hidden");el("ideaRandomModal").onclick=e=>{if(e.target===el("ideaRandomModal"))el("ideaRandomModal").classList.add("hidden")};
-el("ideaExport").onclick=()=>{const from=el("ideaExportFrom").value,to=el("ideaExportTo").value;if(!from||!to)return;if(from>to){alert("기간을 확인해주세요.");return}const a=[...entries()].filter(e=>e.date>=from&&e.date<=to).sort((x,y)=>String(x.date).localeCompare(String(y.date))||((x.createdAt||0)-(y.createdAt||0)));let md="",last="";for(const e of a){if(e.date!==last){if(md)md+="\n";md+=`### ${e.date}\n\n`;last=e.date}md+=`[${catName(e.categoryId)}] ${String(e.text).trim()}${e.ai?" (AI)":""}\n\n`}downloadText(`IDEA_${from}_${to}.md`,md.trimEnd()+"\n","text/markdown")};
+el("ideaExport").onclick=()=>{const from=el("ideaExportFrom").value,to=el("ideaExportTo").value;if(!from||!to)return;if(from>to){alert("기간을 확인해주세요.");return}const a=[...entries()].filter(e=>e.date>=from&&e.date<=to).sort((x,y)=>String(x.date).localeCompare(String(y.date))||((x.createdAt||0)-(y.createdAt||0)));let md="",last="";for(const e of a){if(e.date!==last){if(md)md+="\n";md+=`### ${e.date}\n\n`;last=e.date}md+=`[${catName(e.categoryId)}] ${String(e.text).trim()}${entryState(e)==="ai"?" (AI)":entryState(e)==="favorite"?" (즐겨찾기)":""}\n\n`}downloadText(`IDEA_${from}_${to}.md`,md.trimEnd()+"\n","text/markdown")};
 renderCats();resetForm();render();
 })();
 
