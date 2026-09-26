@@ -1432,14 +1432,18 @@ button{cursor:pointer}
       </div>
     </div>
 
+    <div class="settings-card"><h3>LOG 데이터</h3><div class="export-row"><input type="date" id="logExportFrom"><input type="date" id="logExportTo"></div><div class="data-actions"><button class="soft-btn" id="logMdExport">MD</button><button class="soft-btn" id="logCsvExport">CSV</button><button class="soft-btn" id="logCsvRestore">복원</button><input type="file" id="logCsvRestoreFile" accept=".csv,text/csv" hidden><button class="danger-btn" id="logDeleteRange">삭제</button></div></div>
+    <div class="settings-card"><h3>IDEA 데이터</h3><div class="export-row"><input type="date" id="ideaExportFrom"><input type="date" id="ideaExportTo"></div><div class="data-actions"><button class="soft-btn" id="ideaExport">MD</button><button class="soft-btn" id="ideaCsvExport">CSV</button><button class="soft-btn" id="ideaCsvRestore">복원</button><input type="file" id="ideaCsvRestoreFile" accept=".csv,text/csv" hidden><button class="danger-btn" id="ideaDeleteRange">삭제</button></div></div>
+    <div class="settings-card"><h3>DAY 데이터</h3><div class="export-row"><input type="date" id="diaryExportFrom"><input type="date" id="diaryExportTo"></div><div class="data-actions"><button class="soft-btn" id="diaryExport">MD</button><button class="danger-btn" id="diaryDeleteRange">삭제</button></div></div>
+    <div class="settings-card"><h3>TODO 데이터</h3><div class="export-row"><input type="date" id="todoExportFrom"><input type="date" id="todoExportTo"></div><div class="data-actions"><button class="soft-btn" id="todoExport">MD</button><button class="soft-btn" id="todoCsvExport">CSV</button><button class="danger-btn" id="todoDeleteRange">삭제</button></div></div>
+
     <div class="settings-card">
-      <h3>태그 프리셋</h3>
+      <h3>DAY 태그 프리셋</h3>
       <div id="tagPresetList" class="tag-preset-list"></div>
       <div class="tag-preset-add">
         <input id="tagPresetInput" placeholder="새 태그">
         <button class="primary-btn" id="tagPresetAdd">추가</button>
       </div>
-      
     </div>
 
     <div class="settings-card">
@@ -1450,11 +1454,6 @@ button{cursor:pointer}
         <button class="primary-btn" id="ideaAddCat">추가</button>
       </div>
     </div>
-
-    <div class="settings-card"><h3>DAY 데이터</h3><div class="export-row"><input type="date" id="diaryExportFrom"><input type="date" id="diaryExportTo"></div><div class="data-actions"><button class="soft-btn" id="diaryExport">MD</button><button class="danger-btn" id="diaryDeleteRange">삭제</button></div></div>
-    <div class="settings-card"><h3>LOG 데이터</h3><div class="export-row"><input type="date" id="logExportFrom"><input type="date" id="logExportTo"></div><div class="data-actions"><button class="soft-btn" id="logMdExport">MD</button><button class="soft-btn" id="logCsvExport">CSV</button><button class="soft-btn" id="logCsvRestore">복원</button><input type="file" id="logCsvRestoreFile" accept=".csv,text/csv" hidden><button class="danger-btn" id="logDeleteRange">삭제</button></div></div>
-    <div class="settings-card"><h3>IDEA 데이터</h3><div class="export-row"><input type="date" id="ideaExportFrom"><input type="date" id="ideaExportTo"></div><div class="data-actions"><button class="soft-btn" id="ideaExport">MD</button><button class="soft-btn" id="ideaCsvExport">CSV</button><button class="soft-btn" id="ideaCsvRestore">복원</button><input type="file" id="ideaCsvRestoreFile" accept=".csv,text/csv" hidden><button class="danger-btn" id="ideaDeleteRange">삭제</button></div></div>
-    <div class="settings-card"><h3>TODO 데이터</h3><div class="export-row"><input type="date" id="todoExportFrom"><input type="date" id="todoExportTo"></div><div class="data-actions"><button class="soft-btn" id="todoExport">MD</button><button class="soft-btn" id="todoCsvExport">CSV</button><button class="danger-btn" id="todoDeleteRange">삭제</button></div></div>
   </div>
 </div>
 
@@ -2106,9 +2105,11 @@ document.getElementById("dayInnerTab").onclick=()=>setDayInner("day");document.g
 function csvCell(v){v=String(v??"");return /[",\n]/.test(v)?`"${v.replace(/"/g,'""')}"`:v}
 function weekRangeLabel(key){const a=parseDate(key),b=addDays(a,6);return `${key} ~ ${localDateString(b)}`}
 function morectCsv(x){const m=x?.morect||{};return `M:${m.M?"TRUE":"FALSE"} O:${m.O??""} R:${m.R?"TRUE":"FALSE"} E:${m.E?"TRUE":"FALSE"} C:${m.C?"TRUE":"FALSE"} T:${m.T?"TRUE":"FALSE"}`}
-function logRows(from,to){return Object.keys(data.logs||{}).filter(d=>d>=from&&d<=to).sort().map(d=>{const x={...emptyLog(),...(data.logs[d]||{})},m={...emptyLog().morect,...(x.morect||{})};return [d,x.schedule||"",m.M?"TRUE":"FALSE",m.O??"",m.R?"TRUE":"FALSE",m.E?"TRUE":"FALSE",m.C?"TRUE":"FALSE",m.T?"TRUE":"FALSE",x.title1||"",x.record1||"",x.title2||"",x.record2||"",x.daily||""]})}
+function eachDate(from,to){const out=[];let d=new Date(from+"T12:00:00"),end=new Date(to+"T12:00:00");while(d<=end){out.push(localDateString(d));d.setDate(d.getDate()+1)}return out}
+function mondayOf(dateStr){const d=new Date(dateStr+"T12:00:00"),day=d.getDay();d.setDate(d.getDate()-(day===0?6:day-1));return localDateString(d)}
+function logRows(from,to){return eachDate(from,to).map(d=>{const x={...emptyLog(),...(data.logs?.[d]||{})},m={...emptyLog().morect,...(x.morect||{})};return [d,x.schedule||"",m.M?"TRUE":"FALSE",m.O??"",m.R?"TRUE":"FALSE",m.E?"TRUE":"FALSE",m.C?"TRUE":"FALSE",m.T?"TRUE":"FALSE",x.title1||"",x.record1||"",x.title2||"",x.record2||"",x.daily||""]})}
 function logHeaders(){return ["날짜","일정","M","O","R","E","C","T","작품 1","작품 1 내용","작품 2","작품 2 내용","데일리로그"]}
-function logWeeklyRows(from,to){return Object.keys(data.logWeeks||{}).filter(k=>{const end=new Date(k+"T12:00:00");end.setDate(end.getDate()+6);const e=localDateString(end);return k<=to&&e>=from}).sort().map(k=>{const w=data.logWeeks[k]||{};return [weekRangeLabel(k),w.progress||"",w.weeklyLog||""]})}
+function logWeeklyRows(from,to){const rows=[];let d=new Date(mondayOf(from)+"T12:00:00"),last=mondayOf(to);while(localDateString(d)<=last){const k=localDateString(d),w=data.logWeeks?.[k]||{};rows.push([weekRangeLabel(k),w.progress||"",w.weeklyLog||""]);d.setDate(d.getDate()+7)}return rows}
 function logWeeklyHeaders(){return ["주간 날짜","주간 진도","위클리 로그"]}
 function getLogRange(){const dates=Object.keys(data.logs||{}).sort();return [dates[0]||selectedDate,dates.at(-1)||selectedDate]}
 
